@@ -20,20 +20,10 @@ def index(request):
 		elif request.GET.get("comboBox") == "480p":
 			q_480p = yt.streams.filter(res="480p",mime_type="video/mp4").first().download()
 		elif request.GET.get("comboBox") == "audio":		
-			#audio_128kbps = yt.streams.filter(abr="128kbps",mime_type="audio/mp4").first().download()
 			q_720p = yt.streams.filter(res="720p",mime_type="video/mp4").first().download()
 			
 
-		###########
-		"""videos = yt.streams.all()
-
-		video = list(enumerate(videos))
-		for i in video:
-			print(i)
-
-		dn_video = videos[0]
-		dn_video.download()"""
-		############
+		
 		
 		for i in os.listdir(os.getcwd()):
 			if '.mp4' in i:
@@ -69,9 +59,3 @@ def index(request):
 		}
 		return render(request,'index.html',data)
 	return render(request,'index.html')
-
-            #https://stackoverflow.com/questions/62098925/why-my-youtube-video-downloader-only-downloads-some-videos-and-for-other-videos
-            #bu link ile signatureCipher yaptım cipher kısmını ve hata düzeldi.
-
-            #soundcloud downlaoder https://github.com/flyingrub/scdl
-            #scdl -l url ile çalışıyor terminalden
