@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="self.css">
+    <title>Youtube Mp3 Converter</title>
+	<script>    
+	function visibleOrinvisible(param){
+		if (param === 'yt'){
+		document.getElementById("comboBox").disabled = false
+		}
+		else if (param === 'sc'){
+		document.getElementById("comboBox").disabled = true
+		}
+	}
+
+
+
+</script>
+  </head>
+  <body>
+  	<div class="container"> 
+  		<div class="row" align="center">
+  			
+  			<div class="col-md-12">
+  				<h3 style="margin-top:15px;">Mp3 Converter - <small>This site supports on SoundCloud and YouTube</small></h3>
+  				<form>
+  					<input type="text" placeholder="Enter YouTube Link or SoundCloud Link" name="url" class="inputArea">
+  					<select name="comboBox" class="comboBox" id="comboBox">
+					    <option selected="selected" disabled>İndirme Seçeneği Belirtiniz</option>
+					            <option value="480p">480p</option>
+					            <option value="720p">720p</option>
+					            <option value="1080p">1080p</option>
+					            <option value="audio" autofocus>Mp3</option>
+					 </select>
+  					<button class="btn btn-outline-primary edited" type="submit">Convert</button>
+            <br>
+            <input type="radio" id="YouTube" name="Converter" value="Youtube" onclick="visibleOrinvisible('yt')"/> YouTube
+            <input type="radio" id="SoundCloud" name="Converter" value="SoundCloud" onclick="visibleOrinvisible('sc')" /> SoundCloud
+            <!-- RadioButton soundcloud tıklandığında combox'ı disable yapmak için https://stackoverflow.com/questions/12560043/how-to-disable-a-combo-box-with-radiobutton-javascript -->
+  				</form>
+  				<p>
+  					{% if success %}
+  					{{success}} <br>
+  					<a href="/media/{{url}}" class="btn btn-outline-primary" download  style="margin-top:10px;">Download</a>
+  					{% endif %}
+  				</p>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col-md-12 col-sm-12 col-lg-12" align="center"></div>
+  			{% if views %}
+  			<div align="center">
+  				<h3>{{title}}</h3> 
+  				<hr style="color:white;">
+  				<img src="{{thumbnail}}" width="50%" style="margin:5px;border-radius: 10px;" />
+  				
+  			</div>
+  			<div class="row">
+				<div class="col-md-6" style="text-align: left;font-size:20px; margin-bottom: 10px;">Paylaşan Kanal : {{author}}</div>
+				<div class="col-md-6" style="text-align: right;font-size:20px; margin-bottom: 10px;">Görüntülenme Sayısı : {{views}}</div>
+  				<br>
+  				<p style="font-size:12px;">{{description}}</p>
+  			</div>
+  			{% endif %}
+  			
+  		</div>
+  		
+
+  	</div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+<style>
+	body{
+		background: rgba(30,30,30,0.75);
+		color :white;
+	}
+	.inputArea{
+	border:1px solid black;
+	border-radius: 5px;
+	padding :10px;
+	margin:5px;
+	width: 500px;
+}
+.edited{
+	padding:10px;
+	width: 100px;
+	margin:5px;
+}
+.inputArea:hover{
+	border:1px solid rgba(164,207,245,0.75);
+	-webkit-box-shadow: 0px 0px 10px 5px rgba(164,207,245,0.75);
+	-moz-box-shadow: 0px 0px 10px 5px rgba(164,207,245,0.75);
+	box-shadow: 0px 0px 10px 5px rgba(164,207,245,0.75);
+}
+.comboBox{
+	padding:6px;
+	margin:5px;
+}
+.comboBox:hover{
+	-webkit-box-shadow: 0px 0px 10px 5px rgba(164,207,245,0.75);
+	-moz-box-shadow: 0px 0px 10px 5px rgba(164,207,245,0.75);
+	box-shadow: 0px 0px 10px 5px rgba(164,207,245,0.75);
+}
+</style>
