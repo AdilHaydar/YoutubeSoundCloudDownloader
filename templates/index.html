@@ -17,6 +17,9 @@
 		else if (param === 'sc'){
 		document.getElementById("comboBox").disabled = true
 		}
+		else if (param === 'ig'){
+		document.getElementById("comboBox").disabled = true
+		}
 	}
 
 
@@ -28,9 +31,9 @@
   		<div class="row" align="center">
   			
   			<div class="col-md-12">
-  				<h3 style="margin-top:15px;">Mp3 Converter - <small>This site supports on SoundCloud and YouTube</small></h3>
+  				<h3 style="margin-top:15px;">Mp3 Converter - <small>This site supports on SoundCloud, YouTube and Instagram</small></h3>
   				<form>
-  					<input type="text" placeholder="Enter YouTube Link or SoundCloud Link" name="url" class="inputArea">
+  					<input type="text" placeholder="Enter YouTube Link, SoundCloud Link or Instagram Post Link" name="url" class="inputArea">
   					<select name="comboBox" class="comboBox" id="comboBox">
 					    <option selected="selected" disabled>İndirme Seçeneği Belirtiniz</option>
 					            <option value="480p">480p</option>
@@ -42,6 +45,8 @@
             <br>
             <input type="radio" id="YouTube" name="Converter" value="Youtube" onclick="visibleOrinvisible('yt')"/> YouTube
             <input type="radio" id="SoundCloud" name="Converter" value="SoundCloud" onclick="visibleOrinvisible('sc')" /> SoundCloud
+			<input type="radio" id="Instagram" name="Converter" value="Instagram" onclick="visibleOrinvisible('ig')" /> Instagram
+            <!-- RadioButton soundcloud tıklandığında combox'ı disable yapmak için https://stackoverflow.com/questions/12560043/how-to-disable-a-combo-box-with-radiobutton-javascript -->
   				</form>
   				<p>
   					{% if success %}
@@ -53,7 +58,7 @@
   		</div>
   		<div class="row">
   			<div class="col-md-12 col-sm-12 col-lg-12" align="center"></div>
-  			{% if views %}
+  			{% if show %}
   			<div align="center">
   				<h3>{{title}}</h3> 
   				<hr style="color:white;">
